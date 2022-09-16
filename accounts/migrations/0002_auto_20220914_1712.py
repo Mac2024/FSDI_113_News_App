@@ -38,5 +38,5 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.RunPython(populate_roles),
-        migrations.RunPython(populate_dept)
+        migrations.RunPython(populate_dept),
     ]
