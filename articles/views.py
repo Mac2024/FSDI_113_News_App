@@ -14,17 +14,17 @@ from .models import Article
 
 
 class ArticleListView(ListView):
-    template_name = "Articles/list.html"
+    template_name = "articles/list.html"
     model = Article
 
 
 class ArticleDetailView(DetailView):
-    template_name= "Articles/detail.html"
+    template_name= "articles/detail.html"
     model = Article
 
 
 class ArticleCreateView(LoginRequiredMixin, CreateView):
-    template_name = "Articles/new.html"
+    template_name = "articles/new.html"
     model = Article
     fields = ["title", "subtitle", "body", "author"]
     success_url= reverse_lazy("article_list")
@@ -35,7 +35,7 @@ class ArticleCreateView(LoginRequiredMixin, CreateView):
 
 
 class ArticleUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
-    template_name = "Articles/edit.html"
+    template_name = "articles/edit.html"
     model = Article
     fields = ["title", "subtitle", "body"]
 
@@ -44,7 +44,7 @@ class ArticleUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         return obj.author == self.request.user
 
 class ArticleDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
-    template_name = "Articles/delete.html"
+    template_name = "articles/delete.html"
     model = Article
     success_url = reverse_lazy("article_list")
 
